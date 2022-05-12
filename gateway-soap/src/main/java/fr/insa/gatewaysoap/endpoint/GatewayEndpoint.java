@@ -4,6 +4,7 @@ import fr.insa.gatewaysoap.obj.DebitRequest;
 import fr.insa.gatewaysoap.obj.DebitResponse;
 import fr.insa.gatewaysoap.obj.RemboursementRequest;
 import fr.insa.gatewaysoap.obj.RemboursementResponse;
+import fr.insa.gatewaysoap.repostories.CompteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -15,10 +16,12 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 public class GatewayEndpoint {
     private static final String NAMESPACE_URI = "http://spring.io/guides/gs-producing-web-service";
 
+    private CompteRepository compteRepository;
     private final RestTemplate restTemplate;
 
     @Autowired
-    public GatewayEndpoint() {
+    public GatewayEndpoint(CompteRepository compteRepository) {
+        this.compteRepository = compteRepository;
         this.restTemplate = new RestTemplate();
     }
 
