@@ -30,5 +30,5 @@ public class Compte {
     private Client proprio;
 
     @OneToMany(mappedBy = "compte", cascade = CascadeType.REMOVE)
-    private List<Operation> operation;
+    private List<Operation> operations;
 }
