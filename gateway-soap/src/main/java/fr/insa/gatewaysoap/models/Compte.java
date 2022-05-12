@@ -7,8 +7,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Compte {
     private String numCompte;
     private double solde;
+    private double plafond;
     private double decouvert;
 }

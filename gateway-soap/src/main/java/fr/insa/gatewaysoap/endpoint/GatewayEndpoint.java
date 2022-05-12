@@ -17,15 +17,15 @@ public class GatewayEndpoint {
     private static final String NAMESPACE_URI = "http://spring.io/guides/gs-producing-web-service";
 
     private CompteRepository compteRepository;
-    private final RestTemplate restTemplate;
+    //private final RestTemplate restTemplate;
 
     @Autowired
     public GatewayEndpoint(CompteRepository compteRepository) {
         this.compteRepository = compteRepository;
-        this.restTemplate = new RestTemplate();
+        //this.restTemplate = new RestTemplate();
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "debitRequest")
+    /*@PayloadRoot(namespace = NAMESPACE_URI, localPart = "debitRequest")
     @ResponsePayload
     public DebitResponse debiterCompte(@RequestPayload DebitRequest request) {
         return restTemplate.postForObject("http://localhost:8070/comptes/debit", request, DebitResponse.class);
@@ -35,5 +35,22 @@ public class GatewayEndpoint {
     @ResponsePayload
     public RemboursementResponse rembourserCompte(@RequestPayload RemboursementRequest request) {
         return restTemplate.postForObject("http://localhost:8070/comptes/remboursement", request, RemboursementResponse.class);
+    }*/
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "debitRequest")
+    @ResponsePayload
+    public DebitResponse debiterCompte(@RequestPayload DebitRequest request) {
+        DebitResponse response = new DebitResponse();
+
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "remboursementRequest")
+    @ResponsePayload
+    public RemboursementResponse rembourserCompte(@RequestPayload RemboursementRequest request) {
+        RemboursementResponse response = new RemboursementResponse();
+
+        return response;
     }
 }
