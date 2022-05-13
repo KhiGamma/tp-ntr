@@ -30,6 +30,14 @@ public class CompteResource {
         return compteService.getCompteById(id).getOperations();
     }
 
+    @GetMapping()
+    public Compte getCompteByNumCompte(
+            @RequestParam(
+                    name = "numCompte",
+                    required = true) String numCompte) throws FonctionnalProcessException {
+        return compteService.getCompteByNumCompte(numCompte);
+    }
+
     @PostMapping
     public Compte createCompte(@RequestBody CompteCreateModel compteToCreate) throws Exception {
         return this.compteService.saveCompte(compteToCreate);

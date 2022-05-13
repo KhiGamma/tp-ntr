@@ -39,4 +39,10 @@ public class CompteService {
     public void deleteCompte(String id) {
         this.compteRepository.deleteById(id);
     }
+
+    public Compte getCompteByNumCompte(String numCompte) {
+        Compte compte = compteRepository.findCompteByNumCompte(numCompte);
+
+        return compte;
+    }
 }
