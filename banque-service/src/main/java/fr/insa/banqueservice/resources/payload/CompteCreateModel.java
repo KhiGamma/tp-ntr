@@ -1,13 +1,12 @@
 package fr.insa.banqueservice.resources.payload;
 
 import fr.insa.banqueservice.models.Client;
-import fr.insa.banqueservice.models.Operation;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.List;
-
+@Getter
+@Setter
 public class CompteCreateModel {
-
-    private String id;
 
     private String numCompte;
 
@@ -17,7 +16,5 @@ public class CompteCreateModel {
 
     private double plafond;
 
-    private Client proprio;
-
-    private List<Operation> operations;
+    private String proprio;
 }

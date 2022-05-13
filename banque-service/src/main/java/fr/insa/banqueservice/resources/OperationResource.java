@@ -1,6 +1,5 @@
 package fr.insa.banqueservice.resources;
 
-import fr.insa.banqueservice.models.Compte;
 import fr.insa.banqueservice.models.Operation;
 import fr.insa.banqueservice.services.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;
