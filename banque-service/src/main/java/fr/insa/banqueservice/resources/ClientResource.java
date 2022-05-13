@@ -5,6 +5,7 @@ import fr.insa.banqueservice.models.Client;
 import fr.insa.banqueservice.resources.payload.ClientCreateModel;
 import fr.insa.banqueservice.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,5 +25,11 @@ public class ClientResource {
     @PostMapping
     public Client createClient(@RequestBody ClientCreateModel clientToCreate) throws FonctionnalProcessException {
         return this.clientService.saveClient(clientToCreate);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteClient(@PathVariable("id") String id) {
+        clientService.deleteClient(id);
+        return ResponseEntity.ok().build();
     }
 }

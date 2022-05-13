@@ -27,4 +27,8 @@ public class ClientService {
 
         return this.clientRepository.save(c);
     }
+
+    public void deleteClient(String id) {
+        this.clientRepository.deleteById(id);
+    }
 }
