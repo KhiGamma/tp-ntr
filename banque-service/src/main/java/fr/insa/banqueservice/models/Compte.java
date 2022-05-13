@@ -1,5 +1,6 @@
 package fr.insa.banqueservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Compte {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
+    @JsonIgnore
     private Client proprio;
 
     @OneToMany(mappedBy = "compte", cascade = CascadeType.REMOVE)
