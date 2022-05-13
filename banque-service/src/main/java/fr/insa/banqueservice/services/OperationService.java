@@ -32,4 +32,8 @@ public class OperationService {
 
         return this.operationRepository.save(o);
     }
+
+    public void deleteOperation(String id) {
+        this.operationRepository.deleteById(id);
+    }
 }

@@ -6,6 +6,7 @@ import fr.insa.banqueservice.resources.payload.CompteCreateModel;
 import fr.insa.banqueservice.resources.payload.OperationCreateModel;
 import fr.insa.banqueservice.services.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,5 +24,11 @@ public class OperationResource {
     @PostMapping
     public Operation createOperation(@RequestBody OperationCreateModel operationToCreate) throws Exception {
         return this.operationService.saveOperation(operationToCreate);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteOperation(@PathVariable("id") String id) {
+        operationService.deleteOperation(id);
+        return ResponseEntity.ok().build();
     }
 }
