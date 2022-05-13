@@ -8,13 +8,9 @@ import lombok.Setter;
 @Setter
 public class ClientCreateModel {
 
-    private String id;
-
     private String nom;
 
     private String prenom;
 
     private String email;
-
-    private Compte compte;
 }

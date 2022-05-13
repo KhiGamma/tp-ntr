@@ -1,12 +1,11 @@
 package fr.insa.banqueservice.resources;
 
+import fr.insa.banqueservice.exceptions.FonctionnalProcessException;
 import fr.insa.banqueservice.models.Client;
+import fr.insa.banqueservice.resources.payload.ClientCreateModel;
 import fr.insa.banqueservice.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,10 @@ public class ClientResource {
     @GetMapping("{id}")
     public Client getClient(@PathVariable("id") String id) throws Exception {
         return clientService.getClientById(id);
+    }
+
+    @PostMapping
+    public Client createClient(@RequestBody ClientCreateModel clientToCreate) throws FonctionnalProcessException {
+        return this.clientService.saveClient(clientToCreate);
     }
 }
