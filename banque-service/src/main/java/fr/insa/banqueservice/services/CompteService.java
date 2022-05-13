@@ -45,4 +45,20 @@ public class CompteService {
 
         return compte;
     }
+
+    public void retirerSoldeCompte(String compte, double montant) throws Exception {
+        Compte c = this.getCompteById(compte);
+
+        c.setSolde(c.getSolde() - montant);
+
+        this.compteRepository.save(c);
+    }
+
+    public void ajouterSoldeCompte(String compte, double montant) throws Exception {
+        Compte c = this.getCompteById(compte);
+
+        c.setSolde(c.getSolde() + montant);
+
+        this.compteRepository.save(c);
+    }
 }

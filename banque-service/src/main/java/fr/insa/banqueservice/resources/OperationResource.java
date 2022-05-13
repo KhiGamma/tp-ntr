@@ -26,6 +26,16 @@ public class OperationResource {
         return this.operationService.saveOperation(operationToCreate);
     }
 
+    @PostMapping("/debit")
+    public Operation createOperationDebit(@RequestBody OperationCreateModel operationToCreate) throws Exception {
+        return this.operationService.saveOperationDebit(operationToCreate);
+    }
+
+    @PostMapping("/remboursement")
+    public Operation createOperationRemboursement(@RequestBody OperationCreateModel operationToCreate) throws Exception {
+        return this.operationService.saveOperationRemboursement(operationToCreate);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity deleteOperation(@PathVariable("id") String id) {
         operationService.deleteOperation(id);
