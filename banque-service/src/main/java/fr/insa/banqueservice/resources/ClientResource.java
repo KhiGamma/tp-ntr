@@ -2,6 +2,7 @@ package fr.insa.banqueservice.resources;
 
 import fr.insa.banqueservice.exceptions.FonctionnalProcessException;
 import fr.insa.banqueservice.models.Client;
+import fr.insa.banqueservice.models.Compte;
 import fr.insa.banqueservice.resources.payload.ClientCreateModel;
 import fr.insa.banqueservice.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class ClientResource {
     @GetMapping("{id}")
     public Client getClient(@PathVariable("id") String id) throws Exception {
         return clientService.getClientById(id);
+    }
+
+    @GetMapping("{id}/compte")
+    public Compte getCompteClient(@PathVariable("id") String id) throws Exception {
+        return clientService.getClientById(id).getCompte();
     }
 
     @PostMapping
