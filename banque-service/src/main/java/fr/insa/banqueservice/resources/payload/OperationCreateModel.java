@@ -8,11 +8,9 @@ import lombok.Setter;
 @Setter
 public class OperationCreateModel {
 
-    private String id;
-
     private String type;
 
     private double montant;
 
-    private Compte compte;
+    private String compte;
 }
