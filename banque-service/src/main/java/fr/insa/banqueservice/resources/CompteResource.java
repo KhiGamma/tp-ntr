@@ -7,6 +7,7 @@ import fr.insa.banqueservice.resources.payload.ClientCreateModel;
 import fr.insa.banqueservice.resources.payload.CompteCreateModel;
 import fr.insa.banqueservice.services.CompteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,5 +25,11 @@ public class CompteResource {
     @PostMapping
     public Compte createCompte(@RequestBody CompteCreateModel compteToCreate) throws Exception {
         return this.compteService.saveCompte(compteToCreate);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteCompte(@PathVariable("id") String id) {
+        compteService.deleteCompte(id);
+        return ResponseEntity.ok().build();
     }
 }

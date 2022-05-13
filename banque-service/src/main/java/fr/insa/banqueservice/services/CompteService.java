@@ -35,4 +35,8 @@ public class CompteService {
 
         return this.compteRepository.save(c);
     }
+
+    public void deleteCompte(String id) {
+        this.compteRepository.deleteById(id);
+    }
 }

@@ -26,7 +26,7 @@ public class Compte {
 
     private double plafond;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @JsonIgnore
     private Client proprio;

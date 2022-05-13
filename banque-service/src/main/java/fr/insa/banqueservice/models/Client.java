@@ -22,6 +22,6 @@ public class Client {
 
     private String email;
 
-    @OneToOne(mappedBy = "proprio")
+    @OneToOne(mappedBy = "proprio", cascade = CascadeType.REMOVE)
     private Compte compte;
 }
