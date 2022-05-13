@@ -16,7 +16,7 @@ public class CompteResource {
     public CompteService compteService;
 
     @GetMapping("{id}")
-    public Compte getClient(@PathVariable("id") String id) throws Exception {
+    public Compte getCompte(@PathVariable("id") String id) throws Exception {
         return compteService.getCompteById(id);
     }
 }
