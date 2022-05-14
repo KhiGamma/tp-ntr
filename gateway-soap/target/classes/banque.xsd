@@ -1,0 +1,42 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="debitRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="operation" type="tns:operation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="debitResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="remboursementRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="operation" type="tns:operation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="remboursementResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="operation">
+        <xs:sequence>
+            <xs:element name="numCompte" type="xs:string"/>
+            <xs:element name="montant" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
