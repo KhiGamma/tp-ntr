@@ -13,6 +13,9 @@ import java.util.Map;
 public class CompteRepository {
     private static final Map<String, Compte> comptes = new HashMap<>();
 
+    /**
+     * Methode permettant d'initialiser les données par defaut dans le repository
+     */
     @PostConstruct
     public void initData() {
         Compte c1 = Compte.builder()
@@ -43,11 +46,22 @@ public class CompteRepository {
         comptes.put(c3.getNumCompte(), c3);
     }
 
+    /**
+     * Retrouve un compte dans le repository à partir de son numéro de compte
+     * @param numCompte Chaine de caractères correspondant au numéro de compte
+     * @return Le compte recherché
+     */
     public Compte findCompte(String numCompte) {
         Assert.notNull(numCompte, "Le numero de compte ne doit pas être null");
         return comptes.get(numCompte);
     }
 
+    /**
+     * Retir le montant specifié dans l'opération du compte specifié.
+     * Verifie egalement si l'opération est possible en amont.
+     * @param debitRequest Objet contenant l'opération avec le numéro de compte et le montant
+     * @return Un ojet contant la chaine de caractère indiquant l'état de l'opération
+     */
     public DebitResponse debiterCompte(DebitRequest debitRequest) {
         Compte compte = this.findCompte(debitRequest.getOperation().getNumCompte());
         DebitResponse response = new DebitResponse();
@@ -68,6 +82,12 @@ public class CompteRepository {
         return response;
     }
 
+    /**
+     * Rembourse le montant specifié dans l'opération du compte specifié.
+     * Verifie egalement si l'opération est possible en amont.
+     * @param remboursementRequest Objet contenant l'opération avec le numéro de compte et le montant
+     * @return Un ojet contant la chaine de caractère indiquant l'état de l'opération
+     */
     public RemboursementResponse rembourserCompte(RemboursementRequest remboursementRequest) {
         Compte compte = this.findCompte(remboursementRequest.getOperation().getNumCompte());
         RemboursementResponse response = new RemboursementResponse();

@@ -37,6 +37,11 @@ public class GatewayEndpoint {
         return restTemplate.postForObject("http://localhost:8070/comptes/remboursement", request, RemboursementResponse.class);
     }*/
 
+    /**
+     *  Methode permettant de debiter un compte
+     * @param request Objet contentnant l'opération à effectuer
+     * @return Un objet contenant la chaine de caractère indiquant si l'opération s'est bien déroulée
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "debitRequest")
     @ResponsePayload
     public DebitResponse debiterCompte(@RequestPayload DebitRequest request) {
@@ -46,6 +51,11 @@ public class GatewayEndpoint {
         return response;
     }
 
+    /**
+     *  Methode permettant de rembourser un compte
+     * @param request Objet contentnant l'opération à effectuer
+     * @return Un objet contenant la chaine de caractère indiquant si l'opération s'est bien déroulée
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "remboursementRequest")
     @ResponsePayload
     public RemboursementResponse rembourserCompte(@RequestPayload RemboursementRequest request) {
