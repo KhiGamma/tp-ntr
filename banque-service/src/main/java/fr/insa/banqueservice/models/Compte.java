@@ -31,6 +31,6 @@ public class Compte {
     @JsonIgnore
     private Client proprio;
 
-    @OneToMany(mappedBy = "compte", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "compte", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Operation> operations;
 }
