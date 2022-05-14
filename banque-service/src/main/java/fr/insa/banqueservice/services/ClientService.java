@@ -13,10 +13,22 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
+    /**
+     * selectionner le client depuis l'ID
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Client getClientById(String id) throws Exception {
         return this.clientRepository.findById(id).orElseThrow(Exception::new);
     }
 
+    /**
+     * build permettant la création dun nouveau client
+     * @param clientToCreate
+     * @return
+     * @throws FonctionnalProcessException
+     */
     public Client saveClient(ClientCreateModel clientToCreate) throws FonctionnalProcessException {
 
         Client c = Client.builder()
@@ -28,6 +40,10 @@ public class ClientService {
         return this.clientRepository.save(c);
     }
 
+    /**
+     * supprimer un client depuis l'ID
+     * @param id
+     */
     public void deleteClient(String id) {
         this.clientRepository.deleteById(id);
     }

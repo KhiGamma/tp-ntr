@@ -22,10 +22,22 @@ public class OperationService {
     @Autowired
     private CompteService compteService;
 
+    /**
+     * selectionner une opération depuis l'ID
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Operation getOperationById(String id) throws  Exception {
         return this.operationRepository.findById(id).orElseThrow(Exception::new);
     }
 
+    /**
+     * build permettant la création d'une nouvelle opération
+     * @param operationToCreate
+     * @return
+     * @throws Exception
+     */
     public Operation saveOperation(OperationCreateModel operationToCreate) throws Exception {
 
         Compte compte = compteService.getCompteById(operationToCreate.getCompte());
@@ -39,10 +51,22 @@ public class OperationService {
         return this.operationRepository.save(o);
     }
 
+    /**
+     * supprimer une opération depuis l'ID
+     * @param id
+     */
     public void deleteOperation(String id) {
         this.operationRepository.deleteById(id);
     }
 
+    /**
+     * build permettant la création d'une nouvelle opération de débit
+     * si le montant est correct est ne laisse pas le solde du compte
+     * dépasser le découvert autorisé du compte
+     * @param operationToCreate
+     * @return
+     * @throws Exception
+     */
     @Transactional(rollbackFor = Exception.class)
     public Operation saveOperationDebit(OperationCreateModel operationToCreate) throws Exception {
 
@@ -65,6 +89,14 @@ public class OperationService {
         return this.operationRepository.save(o);
     }
 
+    /**
+     * build permettant la création d'une nouvelle opération de remboursement
+     * si le montant est correct et ne laisse pas le solde du compte
+     * dépasser le plafond autorisé du compte
+     * @param operationToCreate
+     * @return
+     * @throws Exception
+     */
     @Transactional(rollbackFor = Exception.class)
     public Operation saveOperationRemboursement(OperationCreateModel operationToCreate) throws Exception {
 
@@ -87,6 +119,12 @@ public class OperationService {
         return this.operationRepository.save(o);
     }
 
+    /**
+     * méthode qui vérifie les différents champs obligatoires
+     * pour la création d'une entité opération
+     * @param operationToCreate
+     * @throws ModelNotValidException
+     */
     private void validateTransactionModel(OperationCreateModel operationToCreate) throws ModelNotValidException {
 
         ModelNotValidException ex = new ModelNotValidException();

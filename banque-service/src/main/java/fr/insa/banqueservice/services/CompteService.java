@@ -17,10 +17,22 @@ public class CompteService {
     @Autowired
     private ClientService clientService;
 
+    /**
+     * selectionner le compte depuis l'ID
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Compte getCompteById(String id) throws  Exception {
         return this.compteRepository.findById(id).orElseThrow(Exception::new);
     }
 
+    /**
+     * build permettant la création d'un nouveau compte
+     * @param compteToCreate
+     * @return
+     * @throws Exception
+     */
     public Compte saveCompte(CompteCreateModel compteToCreate) throws Exception {
 
         Client client = clientService.getClientById(compteToCreate.getProprio());
@@ -36,16 +48,31 @@ public class CompteService {
         return this.compteRepository.save(c);
     }
 
+    /**
+     * supprimer un compte depuis l'ID
+     * @param id
+     */
     public void deleteCompte(String id) {
         this.compteRepository.deleteById(id);
     }
 
+    /**
+     * selectionner le compte depuis le numéro de compte
+     * @param numCompte
+     * @return
+     */
     public Compte getCompteByNumCompte(String numCompte) {
         Compte compte = compteRepository.findCompteByNumCompte(numCompte);
 
         return compte;
     }
 
+    /**
+     * méthode permettant de retirer un montant à un compte
+     * @param compte
+     * @param montant
+     * @throws Exception
+     */
     public void retirerSoldeCompte(String compte, double montant) throws Exception {
         Compte c = this.getCompteById(compte);
 
@@ -54,6 +81,12 @@ public class CompteService {
         this.compteRepository.save(c);
     }
 
+    /**
+     * méthode permettant d'ajouter un montant à un compte
+     * @param compte
+     * @param montant
+     * @throws Exception
+     */
     public void ajouterSoldeCompte(String compte, double montant) throws Exception {
         Compte c = this.getCompteById(compte);
 
