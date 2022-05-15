@@ -12,6 +12,9 @@ import { SingleProduitComponent } from './single-produit/single-produit.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NewProduitComponent } from './new-produit/new-produit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CartService } from './services/cart.service';
+import { CartComponent } from './cart/cart.component';
+import { ProduitPanierComponent } from './produit-panier/produit-panier.component';
 
 const appRoutes: Routes = [
     { path: 'produits', component: ProductListComponent },
@@ -26,7 +29,9 @@ const appRoutes: Routes = [
     AppComponent,
     ProductListComponent,
     SingleProduitComponent,
-    NewProduitComponent
+    NewProduitComponent,
+    CartComponent,
+    ProduitPanierComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ const appRoutes: Routes = [
     NgbModule
   ],
   providers: [
-      ProduitService
+      ProduitService,
+      CartService
   ],
   bootstrap: [AppComponent]
 })

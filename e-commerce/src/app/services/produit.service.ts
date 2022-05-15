@@ -44,6 +44,20 @@ export class ProduitService {
         this.emitProduit();
     }
 
+    getfromIndex(index: number) {
+        return this.produits[index];
+    }
+
+    removeOneItem(index: number) {
+        this.produits[index].qte = this.produits[index].qte - 1;
+        this.emitProduit();
+    }
+
+    addOneItem(index: number) {
+        this.produits[index].qte = this.produits[index].qte + 1;
+        this.emitProduit();
+    }
+
     saveProduitsToServer() {
         this.httpclient
             .put(`${this.BASE_URL}/produits.json`, this.produits)

@@ -2,6 +2,8 @@
     <h4>Produit : {{ nom }}</h4>
     <p>Il reste {{ qte }} exemplaires de cet article</p>
     <button class="btn btn-success" 
-        (click)="onAddToCart()" 
-        [disabled]="qte > 0">Ajouter au panier</button>
+        (click)="addToCart()" 
+        [disabled]="qte === 0">Ajouter au panier</button>
+    <button class="btn btn-danger" 
+        (click)="removeFromCart()">Retirer du panier</button>
 </li>

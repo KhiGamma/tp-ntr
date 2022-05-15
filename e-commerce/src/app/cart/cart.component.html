@@ -1,0 +1,10 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h3>Votre panier</h3>
+    </div>
+    <ul class="list-unstyled components">
+        <app-produit-panier
+            *ngFor="let produit of panier"
+            [nom]="produit.nom"></app-produit-panier>
+    </ul>
+</div>

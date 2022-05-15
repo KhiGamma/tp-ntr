@@ -3,7 +3,8 @@
 
     <ul class="list-group">
         <app-single-produit
-            *ngFor="let produit of produits"
+            *ngFor="let produit of produits; let i = index"
+                [index]="i"
                 [id]="produit.id"
                 [nom]="produit.nom"
                 [qte]="produit.qte"></app-single-produit>
@@ -15,4 +16,6 @@
             (click)="onSave()">Enregistrer</button>
     <button class="btn btn-primary"
             (click)="onFetch()">Charger</button>
+
+    <app-cart></app-cart>
 </div>
