@@ -48,13 +48,27 @@ export class ProduitService {
         return this.produits[index];
     }
 
-    removeOneItem(index: number) {
-        this.produits[index].qte = this.produits[index].qte - 1;
+    removeOneItem(id: number) {
+        this.produits = this.produits.map<any>(element => {
+            if(element.id === id) {
+                element.qte = element.qte - 1;
+            }
+
+            return element;
+        });
+
         this.emitProduit();
     }
 
-    addOneItem(index: number) {
-        this.produits[index].qte = this.produits[index].qte + 1;
+    addOneItem(id: number) {
+        this.produits = this.produits.map<any>(element => {
+            if(element.id === id) {
+                element.qte = element.qte + 1;
+            }
+
+            return element;
+        });
+
         this.emitProduit();
     }
 

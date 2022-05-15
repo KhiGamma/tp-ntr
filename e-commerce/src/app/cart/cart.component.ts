@@ -18,7 +18,6 @@ export class CartComponent implements OnInit {
         this.panierSubscription = this.cartService.panierSubject.subscribe({
             next: (panier: any[]) => {
                 this.panier = panier;
-                console.log(this.panier);
             }
         });
         this.cartService.emitPanier();

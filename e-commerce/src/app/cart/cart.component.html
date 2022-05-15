@@ -5,6 +5,7 @@
     <ul class="list-unstyled components">
         <app-produit-panier
             *ngFor="let produit of panier"
-            [nom]="produit.nom"></app-produit-panier>
+            [nom]="produit.nom"
+            [qte]="produit.qte"></app-produit-panier>
     </ul>
 </div>

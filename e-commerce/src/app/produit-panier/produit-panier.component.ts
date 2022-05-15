@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProduitPanierComponent implements OnInit {
 
     @Input() nom: string;
+    @Input() qte: number;
 
     constructor() { }
 

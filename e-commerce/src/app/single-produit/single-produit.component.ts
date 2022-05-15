@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Produit } from '../models/produit.model';
 import { CartService } from '../services/cart.service';
 import { ProduitService } from '../services/produit.service';
 
@@ -23,10 +24,13 @@ export class SingleProduitComponent implements OnInit {
     addToCart() {
         const produit = this.produitService.getfromIndex(this.index);
         this.cartservice.addToCart(produit);
+        this.produitService.removeOneItem(produit.id);
     }
 
     removeFromCart() {
+        const produit = this.produitService.getfromIndex(this.index);
         this.cartservice.removeFromCart(this.id);
+        this.produitService.addOneItem(produit.id);
     }
 
 }
