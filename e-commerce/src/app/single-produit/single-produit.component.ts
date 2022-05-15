@@ -16,4 +16,7 @@ export class SingleProduitComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    addToCart() {
+    }
+
 }

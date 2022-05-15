@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { Produit } from "../models/produit.model";
 
 @Injectable()
 export class ProduitService {
@@ -28,18 +29,18 @@ export class ProduitService {
         return produit;
     }
 
-    addProduit(nom: string, qte: number) {
-        const produit = {
+    addProduit(produit: Produit) {
+        const produitObject = {
             id: 0,
             nom: '',
             qte: 0
         }
 
-        produit.nom = nom;
-        produit.qte = qte;
-        produit.id = this.produits[(this.produits.length - 1)].id + 1;
+        produitObject.nom = produit.nom;
+        produitObject.qte = produit.qte;
+        produitObject.id = (this.produits.length)? this.produits[(this.produits.length - 1)].id + 1 : 1;
 
-        this.produits.push(produit);
+        this.produits.push(produitObject);
         this.emitProduit();
     }
 

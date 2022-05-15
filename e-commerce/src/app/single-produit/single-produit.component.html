@@ -1,4 +1,7 @@
 <li class="list-group-item">
     <h4>Produit : {{ nom }}</h4>
     <p>Il reste {{ qte }} exemplaires de cet article</p>
+    <button class="btn btn-success" 
+        (click)="onAddToCart()" 
+        [disabled]="qte > 0">Ajouter au panier</button>
 </li>

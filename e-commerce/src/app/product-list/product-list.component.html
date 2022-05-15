@@ -5,9 +5,12 @@
         <app-single-produit
             *ngFor="let produit of produits"
                 [id]="produit.id"
-                [nom]="produit.name"
+                [nom]="produit.nom"
                 [qte]="produit.qte"></app-single-produit>
     </ul>
+    
+    <button class="btn btn-success"
+            routerLink="new">Ajouter un produit</button>
     <button class="btn btn-primary"
             (click)="onSave()">Enregistrer</button>
     <button class="btn btn-primary"
