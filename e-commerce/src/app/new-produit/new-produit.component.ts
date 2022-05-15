@@ -25,6 +25,7 @@ export class NewProduitComponent implements OnInit {
         this.produitForm = this.formBuilder.group({
             nom: ['', Validators.required],
             qte: [0, Validators.required],
+            prix: [0, Validators.required],
         })
     }
 
@@ -32,7 +33,8 @@ export class NewProduitComponent implements OnInit {
         const formValue = this.produitForm.value;
         const newProduit = new Produit(
             formValue['nom'],
-            formValue['qte']
+            formValue['qte'],
+            formValue['prix']
         );
         this.produitService.addProduit(newProduit);
         this.router.navigate(['/']);

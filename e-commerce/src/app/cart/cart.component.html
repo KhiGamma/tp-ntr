@@ -6,6 +6,10 @@
         <app-produit-panier
             *ngFor="let produit of panier"
             [nom]="produit.nom"
-            [qte]="produit.qte"></app-produit-panier>
+            [qte]="produit.qte"
+            [prixTotal]="produit.prixTotal"></app-produit-panier>
     </ul>
+    <button class="btn btn-success"
+            [disabled]="panier.length === 0"
+            (click)="onPay()">Payer</button>
 </div>

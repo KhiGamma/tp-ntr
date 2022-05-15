@@ -9,6 +9,7 @@ export class ProduitPanierComponent implements OnInit {
 
     @Input() nom: string;
     @Input() qte: number;
+    @Input() prixTotal: number;
 
     constructor() { }
 

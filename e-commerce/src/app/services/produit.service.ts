@@ -12,7 +12,8 @@ export class ProduitService {
     private produits: { 
         id: number,
         nom: string,
-        qte: number }[] = [];
+        qte: number,
+        prix: number }[] = [];
 
     constructor(private httpclient: HttpClient) {}
 
@@ -33,11 +34,13 @@ export class ProduitService {
         const produitObject = {
             id: 0,
             nom: '',
-            qte: 0
+            qte: 0,
+            prix : 0
         }
 
         produitObject.nom = produit.nom;
         produitObject.qte = produit.qte;
+        produitObject.prix = produit.prix;
         produitObject.id = (this.produits.length)? this.produits[(this.produits.length - 1)].id + 1 : 1;
 
         this.produits.push(produitObject);

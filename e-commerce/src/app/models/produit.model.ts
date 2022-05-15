@@ -1,5 +1,6 @@
 export class Produit{
     constructor(
         public nom: string,
-        public qte: number) {}
+        public qte: number,
+        public prix: number) {}
 }

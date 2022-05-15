@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CartService } from './services/cart.service';
 import { CartComponent } from './cart/cart.component';
 import { ProduitPanierComponent } from './produit-panier/produit-panier.component';
+import { BanqueService } from './services/banque.service';
 
 const appRoutes: Routes = [
     { path: 'produits', component: ProductListComponent },
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
   ],
   providers: [
       ProduitService,
-      CartService
+      CartService,
+      BanqueService
   ],
   bootstrap: [AppComponent]
 })

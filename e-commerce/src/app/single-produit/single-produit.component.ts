@@ -14,6 +14,7 @@ export class SingleProduitComponent implements OnInit {
     @Input() nom: string;
     @Input() qte: number;
     @Input() index: number;
+    @Input() prix: number;
 
     constructor(private produitService : ProduitService,
                 private cartservice: CartService) { }
@@ -29,7 +30,7 @@ export class SingleProduitComponent implements OnInit {
 
     removeFromCart() {
         const produit = this.produitService.getfromIndex(this.index);
-        this.cartservice.removeFromCart(this.id);
+        this.cartservice.removeFromCart(produit);
         this.produitService.addOneItem(produit.id);
     }
 
